@@ -1,11 +1,12 @@
 Revision history for Perl extension PHP::Include.
 
-0.3
+0.30  Fri Jan 28 14:16:06 WET 2011
+        - added support to first level nested arrays. More soon.
 
-0.2   Mon Jun  6 09:37:53 CDT 2005
+0.20  Mon Jun  6 09:37:53 CDT 2005
         - added // style comments (thanks Rudiger Grefe)
 
-0.1   Sun Mar 14 09:08:34 2004
+0.10  Sun Mar 14 09:08:34 2004
         - fixed documentation error (thanks Aran Deltac)
         - constants can now be integers
         - no longer require 5.8.0

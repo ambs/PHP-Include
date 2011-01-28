@@ -5,7 +5,7 @@ use warnings;
 use Filter::Simple;
 use Carp qw( croak );
 
-our $VERSION = '0.3';
+our $VERSION = '0.30';
 our $DEBUG = 0;
 
 FILTER {
@@ -156,11 +156,15 @@ to figure out what isn't getting parsed properly.
 
 =head1 AUTHOR
 
+Maintained by Alberto Simões, E<lt>ambs@cpan.orgE<gt>
+
 Ed Summers, E<lt>ehs@pobox.comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2002-2005 by Ed Summers
+Copyright 2002-2010 by Ed Summers
+
+Copyright 2011 by Alberto Simões
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
