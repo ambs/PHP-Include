@@ -1,0 +1,36 @@
+Revision history for Perl extension PHP::Include.
+
+0.3
+
+0.2   Mon Jun  6 09:37:53 CDT 2005
+        - added // style comments (thanks Rudiger Grefe)
+
+0.1   Sun Mar 14 09:08:34 2004
+        - fixed documentation error (thanks Aran Deltac)
+        - constants can now be integers
+        - no longer require 5.8.0
+
+0.08  Tue Mar 02 09:19:12 2004
+        - added shell style comment handling (thanks Aaron Sherman)
+        - allow trailing comma (thanks Aaron)
+
+0.07  Fri Nov 14 04:45:33 2003
+	- revamped grammar in PHP::Include::Vars so that double quotes
+	  actually work, and productions return properly instead of 
+	  cheating by stashing things in package variables. This was
+	  all inspired by RT #4397. 
+
+0.06  Mon Oct 13 09:06:00 2003
+	- include_php_vars() now can have a single quoted string
+
+0.05  Tue Dec 31 09:17:00 2002
+	- understands constants 
+	- ability to get diagnostics
+
+0.02  Mon Dec 30 09:02:00 2002
+	- docs update (thanks Andy)
+
+0.01  Tue Dec 17 14:10:36 2002
+	- original version; created by h2xs 1.22 with options
+		-X PHP/Include
+
