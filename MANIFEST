@@ -10,3 +10,5 @@ t/006.singlequotes.t
 t/010.vars.t
 t/test.php
 META.yml
+t/hol.php
+t/011.hol.t
