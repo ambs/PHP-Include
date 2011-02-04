@@ -1,9 +1,13 @@
 Revision history for Perl extension PHP::Include.
+
+0.32  Fri Feb  4 20:45:12 WET 2011
+        - added support to nested arrays on arrays.
+
 0.31  Fri Feb  4 19:53:24 WET 2011
         - support // style comments within Array() definitions.
 
 0.30  Fri Jan 28 14:16:06 WET 2011
-        - added support to first level nested arrays. More soon.
+        - added support to nested arrays on hashes.
 
 0.20  Mon Jun  6 09:37:53 CDT 2005
         - added // style comments (thanks Rudiger Grefe)

@@ -12,3 +12,5 @@ t/test.php
 META.yml
 t/hol.php
 t/011.hol.t
+t/lol.php
+t/012.lol.t

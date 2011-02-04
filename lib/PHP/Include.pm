@@ -5,7 +5,7 @@ use warnings;
 use Filter::Simple;
 use Carp qw( croak );
 
-our $VERSION = '0.31';
+our $VERSION = '0.32';
 our $DEBUG = 0;
 
 FILTER {

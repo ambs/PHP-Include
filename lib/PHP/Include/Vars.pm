@@ -55,7 +55,7 @@ double_quoted:	/".*?"/
 
 single_quoted:	/'.*?'/
 
-element:	scalar | bareword
+element:	array | scalar | bareword
 
 pair:		scalar /=>/ ( scalar | array | bareword )
 		{

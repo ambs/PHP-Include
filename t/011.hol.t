@@ -18,4 +18,4 @@ is(ref($hash1{b}) => 'ARRAY', 'Value for "b" is array reference');
 is(ref($hash1{c}) => 'ARRAY', 'Value for "c" is array reference');
 
 is($hash1{b}[2] => 'bii', 'Check value on {b}->[2]');
-is($hash1{c}[2] => 3, 'Check value on {c}->[2]);
+is($hash1{c}[2] => 3, 'Check value on {c}->[2]');
