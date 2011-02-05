@@ -32,7 +32,7 @@ var_assign:	variable /=/ scalar
 		}
 
 hash_assign:	variable /=/ /Array\s*\(/i pair(s /,/) /\s*(,\s*)?\)/
-		{ 
+		{
 		    $item[1] =~ s/^\$/%/;
 		    $return = "my $item[1]=(" . join( ',', @{$item[4]} ) . ')';
 		}
@@ -57,7 +57,7 @@ single_quoted:	/'.*?'/
 
 element:	array | scalar | bareword
 
-pair:		scalar /=>/ ( scalar | array | bareword )
+pair:		scalar /=>/ ( scalar | array | hash | bareword )
 		{
 		    $return = $item[1] . '=>' . $item[3];
 		}
@@ -65,6 +65,11 @@ pair:		scalar /=>/ ( scalar | array | bareword )
 array:          /Array\s*\(/i element(s /,/) /\s*(,\s*)?\)/
                 {
                     $return = '['.join(',',@{$item[2]}) . ']';
+                }
+
+hash:           /Array\s*\(/i pair(s /,/) /\s*(,\s*)?\)/
+                {
+                    $return = '{'.join(',',@{$item[2]}) . '}';
                 }
 
 bareword:	/[0-9a-zA-Z_]+/
