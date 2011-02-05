@@ -6,10 +6,19 @@ use Parse::RecDescent;
 use Data::Dumper;
 
 our $perl = '';
-my $grammar = 
+our %declared_var = ();
 
+sub declare {
+    my $var = shift;
+    if ($declared_var{$var}) {
+        return $var
+    } else {
+        $declared_var{$var}++;
+        return "my $var"
+    }
+}
 
-<<'GRAMMAR';
+my $grammar = <<'GRAMMAR';
 
 php_vars:	php_start statement(s) php_end
 
@@ -26,26 +35,29 @@ assignment:	( var_assign | hash_assign | array_assign | constant ) /;/
 		    $PHP::Include::Vars::perl .= "$item[1];\n";
 		}
 
-var_assign:	variable /=/ scalar 
+var_assign:	variable /=/ scalar
 		{
-		    $return = "my $item[1]=$item[3]"; 
+                    $return = PHP::Include::Vars::declare($item[1]) .
+                              "=$item[3]";
 		}
 
 hash_assign:	variable /=/ /Array\s*\(/i pair(s /,/) /\s*(,\s*)?\)/
 		{
 		    $item[1] =~ s/^\$/%/;
-		    $return = "my $item[1]=(" . join( ',', @{$item[4]} ) . ')';
+                    $return = PHP::Include::Vars::declare($item[1]) .
+                              "=(" . join( ',', @{$item[4]} ) . ')';
 		}
 
 array_assign:	variable /=/ /Array\s*\(/i element(s /,/) /\s*(,\s*)?\)/
 		{
 		    $item[1] =~ s/^\$/@/;
-		    $return = "my $item[1]=(" . join( ',', @{$item[4]} ) . ')'
+                    $return = PHP::Include::Vars::declare($item[1]) .
+                              "=(" . join( ',', @{$item[4]} ) . ')';
 		}
 
 scalar:		string | number	
 
-variable:	/\$[a-zA-Z_][0-9a-zA-Z_]*/ 
+variable:	/\$[a-zA-Z_][0-9a-zA-Z_]*/
 
 number:		/-?[0-9.]+/
 
