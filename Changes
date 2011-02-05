@@ -1,5 +1,9 @@
 Revision history for Perl extension PHP::Include.
 
+0.33  Sat Feb  5 21:56:01 WET 2011
+        - added support to lists of hashes
+        - added support to hases of hashes
+
 0.32  Fri Feb  4 20:45:12 WET 2011
         - added support to nested arrays on arrays.
 
