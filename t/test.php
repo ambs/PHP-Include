@@ -23,6 +23,8 @@ $hash4 = Array(
     'larry' => 'Larry Wall'
 );
 
+$url = "http://www.google.com/";
+
 define( "TEST_CONSTANT", 'NJ and you, perfect together' );
 define( "ANOTHER_CONSTANT", "NJ, the garden state" );
 define( "YETANOTHER_CONSTANT", 80 );

@@ -5,7 +5,7 @@ use warnings;
 use Filter::Simple;
 use Carp qw( croak );
 
-our $VERSION = '0.33';
+our $VERSION = '0.34';
 our $DEBUG = 0;
 
 FILTER {
@@ -44,8 +44,8 @@ sub read_file {
     open( IN, $file ) || croak( "$file doesn't exist!" );
     my $php =  join( '', <IN> );
     # strip comments (sorry if you have # in strings)
-    $php =~ s!^\s*(?:#|//).*\n!!gm; # full line comments, delete line
-    $php =~ s!(?:#|//).*\n!\n!g;    # others, keep new line
+    ## $php =~ s!^\s*(?:#|//).*\n!!gm; # full line comments, delete line
+    ## $php =~ s!(?:#|//).*\n!\n!g;    # others, keep new line
     print STDERR "ORIGINAL PHP:\n\n", $php if $DEBUG;
     close( IN );
     return( "use $filter;\n" . $php . "no $filter;\n" );

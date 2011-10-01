@@ -41,18 +41,18 @@ var_assign:	variable /=/ scalar
                               "=$item[3]";
 		}
 
-hash_assign:	variable /=/ /Array\s*\(/i pair(s /,/) /\s*(,\s*)?\)/
+hash_assign:	variable /=/ /Array\s*\(/i pair(s /,?/) /\s*(,\s*)?\)/
 		{
 		    $item[1] =~ s/^\$/%/;
                     $return = PHP::Include::Vars::declare($item[1]) .
-                              "=(" . join( ',', @{$item[4]} ) . ')';
+                              "=(" . join( ',', grep /./,@{$item[4]} ) . ')';
 		}
 
-array_assign:	variable /=/ /Array\s*\(/i element(s /,/) /\s*(,\s*)?\)/
+array_assign:	variable /=/ /Array\s*\(/i element(s /,?/) /\s*(,\s*)?\)/
 		{
 		    $item[1] =~ s/^\$/@/;
                     $return = PHP::Include::Vars::declare($item[1]) .
-                              "=(" . join( ',', @{$item[4]} ) . ')';
+                              "=(" . join( ',', grep /./,@{$item[4]} ) . ')';
 		}
 
 scalar:		string | number	
@@ -67,12 +67,13 @@ double_quoted:	/".*?"/
 
 single_quoted:	/'.*?'/
 
-element:	array | scalar | hash | bareword
+element:	array | scalar | hash | bareword | comment { $return = "" }
 
 pair:		scalar /=>/ ( scalar | array | hash | bareword )
 		{
 		    $return = $item[1] . '=>' . $item[3];
 		}
+                | comment { $return = "" }
 
 array:          /Array\s*\(/i element(s /,/) /\s*(,\s*)?\)/
                 {
@@ -99,10 +100,10 @@ my $parser = Parse::RecDescent->new( $grammar );
 
 FILTER {
     $perl = '';
-    #$::RD_TRACE = 1;
+    # $::RD_TRACE = 1;
     $parser->php_vars( $_ );
     print STDERR "\n\nGENERATED PERL:\n\n", $perl, "\n\n"
-	if $PHP::Include::DEBUG; 
+	if $PHP::Include::DEBUG;
     $_ = $perl;
 }
 

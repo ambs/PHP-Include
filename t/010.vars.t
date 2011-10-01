@@ -1,4 +1,4 @@
-use Test::More tests => 19; 
+use Test::More tests => 20;
 
 use strict;
 use PHP::Include;
@@ -10,8 +10,9 @@ ok( $number1 == 123, 'integer assignment' );
 ok( $number2 == 123.45, 'float assignment w/ spaces' );
 
 ## strings
-ok( $string1 eq 'McHenry, IL', 'string assignment w/ single quotes' );
-ok( $string2 eq 'Trenton, NJ', 'string assignement w/ double quotes' );
+is $string1 => 'McHenry, IL', 'string assignment w/ single quotes';
+is $string2 => 'Trenton, NJ', 'string assignement w/ double quotes';
+is $url     => 'http://www.google.com/';
 
 ## arrays
 ok( $array1[0] == 123, 'array with one integer element' );
