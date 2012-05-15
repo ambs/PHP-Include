@@ -1,5 +1,8 @@
 Revision history for Perl extension PHP::Include.
 
+0.35  Tue May 15 20:50:24 WEST 2012
+        - support backslashed quotes inside strings
+
 0.34  Sat Oct  1 15:25:21 WEST 2011
         - parse comments correctly (or mostly)
 

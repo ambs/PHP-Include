@@ -1,4 +1,4 @@
-use Test::More tests => 21;
+use Test::More tests => 22;
 
 use strict;
 use PHP::Include;
@@ -13,6 +13,7 @@ ok( $number2 == 123.45, 'float assignment w/ spaces' );
 is $string1 => 'McHenry, IL', 'string assignment w/ single quotes';
 is $string2 => 'Trenton, NJ', 'string assignement w/ double quotes';
 is $string3 => 'a # hash';
+is $string4 => 'a " quote';
 is $url     => 'http://www.google.com/';
 
 ## arrays

@@ -9,6 +9,7 @@ $number2 = 123.45;
 $string1 = 'McHenry, IL';
 $string2 = "Trenton, NJ";
 $string3 = "a # hash";
+$string4 = "a \" quote";
 
 $array1 = Array( 123 );
 $array2 = Array( 123, 456, 789 );

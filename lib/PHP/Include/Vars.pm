@@ -63,7 +63,7 @@ number:		/-?[0-9.]+/
 
 string:		double_quoted | single_quoted
 
-double_quoted:	/".*?"/
+double_quoted:	/ " (?: [^\\"] | \\" )* " /x
 
 single_quoted:	/'.*?'/
 
@@ -101,6 +101,7 @@ my $parser = Parse::RecDescent->new( $grammar );
 FILTER {
     $perl = '';
     # $::RD_TRACE = 1;
+    %declared_var = ();
     $parser->php_vars( $_ );
     print STDERR "\n\nGENERATED PERL:\n\n", $perl, "\n\n"
 	if $PHP::Include::DEBUG;
