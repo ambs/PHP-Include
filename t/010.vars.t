@@ -1,4 +1,4 @@
-use Test::More tests => 20;
+use Test::More tests => 21;
 
 use strict;
 use PHP::Include;
@@ -12,6 +12,7 @@ ok( $number2 == 123.45, 'float assignment w/ spaces' );
 ## strings
 is $string1 => 'McHenry, IL', 'string assignment w/ single quotes';
 is $string2 => 'Trenton, NJ', 'string assignement w/ double quotes';
+is $string3 => 'a # hash';
 is $url     => 'http://www.google.com/';
 
 ## arrays
@@ -30,7 +31,7 @@ ok( ($hash2{'a'} == 1 and $hash2{'b'} == 2 and $hash2{'c'} == 3 ),
     'hash with three key/value pairs' 
 );
 ok( ($hash3{1} eq 'a' and  $hash3{'foo'} eq 'bar' and 
-    $hash3{123.45} eq 'moog' ),
+    $hash3{123.45} eq 'mo#og' ),
     'hash with different types of key/value pairs'
 );
 ok ( ($hash4{abe} eq 'Abraham Lincoln' and $hash4{larry} = 'Larry Wall' ),

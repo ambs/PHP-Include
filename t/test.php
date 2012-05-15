@@ -8,6 +8,7 @@ $number2 = 123.45;
 
 $string1 = 'McHenry, IL';
 $string2 = "Trenton, NJ";
+$string3 = "a # hash";
 
 $array1 = Array( 123 );
 $array2 = Array( 123, 456, 789 );
@@ -16,7 +17,7 @@ $array4 = Array( "abc", "def", "ghi" );
 
 $hash1 = Array( 'a' => 1 );
 $hash2 = Array( 'a' => 1, 'b' => 2, 'c' => 3 );
-$hash3 = Array( 1 => 'a', 'foo' => "bar", 123.45 => 'moog' );
+$hash3 = Array( 1 => 'a', 'foo' => "bar", 123.45 => "mo#og" );
 
 $hash4 = Array(
     'abe'   => 'Abraham Lincoln',
