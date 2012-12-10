@@ -1,5 +1,8 @@
 Revision history for Perl extension PHP::Include.
 
+0.36  Mon Dec 10 14:06:04 WET 2012
+        - suppors variables defined as my or our
+
 0.35  Tue May 15 20:50:24 WEST 2012
         - support backslashed quotes inside strings
 

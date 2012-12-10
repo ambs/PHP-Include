@@ -7,6 +7,7 @@ use Data::Dumper;
 
 our $perl = '';
 our %declared_var = ();
+our $QUALIFIER = 'my';
 
 sub declare {
     my $var = shift;
@@ -14,7 +15,7 @@ sub declare {
         return $var
     } else {
         $declared_var{$var}++;
-        return "my $var"
+        return "$QUALIFIER $var"
     }
 }
 
@@ -99,6 +100,11 @@ GRAMMAR
 my $parser = Parse::RecDescent->new( $grammar );
 
 FILTER {
+
+    my ($class, $qualifier ) = map { lc($_) } @_;
+
+    $QUALIFIER = $qualifier || "my";
+
     $perl = '';
     # $::RD_TRACE = 1;
     %declared_var = ();

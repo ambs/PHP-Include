@@ -5,8 +5,9 @@ use warnings;
 use Filter::Simple;
 use Carp qw( croak );
 
-our $VERSION = '0.35';
+our $VERSION = '0.36';
 our $DEBUG = 0;
+our $QUALIFIER = "my";
 
 FILTER {
 
@@ -14,6 +15,7 @@ FILTER {
 
     my ( $class, %options ) = map { lc($_) } @_; 
     $DEBUG = 1 if $options{debug};
+    $QUALIFIER = "our" if $options{our};
 
     ## include_php_vars() macro
     s/
@@ -48,10 +50,12 @@ sub read_file {
     ## $php =~ s!(?:#|//).*\n!\n!g;    # others, keep new line
     print STDERR "ORIGINAL PHP:\n\n", $php if $DEBUG;
     close( IN );
-    return( "use $filter;\n" . $php . "no $filter;\n" );
+    return( "use $filter '$QUALIFIER';\n" . $php . "no $filter;\n" );
 }
 
 1;
+
+=encoding UTF-8
 
 =head1 NAME
 
@@ -79,7 +83,7 @@ cause PHP to be interpolated into your Perl source code, which is then parsed
 using a Parse::RecDescent grammar to generate the appropriate Perl.
 
 PHP::Include was designed to allow the more adventurous to add grammars that 
-extend the complexity of PHP that may be included. 
+extend the complexity of PHP that may be included.
 
 =head1 EXPORTS
 
@@ -118,15 +122,22 @@ Behind the scenes the PHP is rewritten as this Perl:
     );
     my @times = ( 10,12,14,16,18 );
 
-Notice that the enclosing E<lt>php? and ?E<gt> are removed, all variables are 
-lexically scoped with 'my' and that the $ sigils are changed as appropriate to 
-(@ and %). In addition PHP constant definitions are translated into Perl 
-constants. 
+Notice that the enclosing E<lt>php? and ?E<gt> are removed, all
+variables are lexically scoped with 'my' and that the $ sigils are
+changed as appropriate to (@ and %). In addition PHP constant
+definitions are translated into Perl constants.
+
+=head1 MY vs OUR
+
+Variables are usually defined using 'my' qualifier. A 'our' qualifier
+can be forced using:
+
+   use PHP::Include ( our => 1 );
 
 =head1 DIAGNOSTICS
 
-If you would like to see diagnostic information on STDERR you will need to 
-use this module slightly differently:
+If you would like to see diagnostic information on STDERR you will
+need to use this module slightly differently:
 
     use PHP::Include ( DEBUG => 1 );
 
@@ -144,6 +155,8 @@ to figure out what isn't getting parsed properly.
 
 =item * store compiled grammar if possible for speed gain
 
+=back
+
 =head1 SEE ALSO
 
 =over 4
@@ -153,6 +166,8 @@ to figure out what isn't getting parsed properly.
 =item * Filter::Simple
 
 =item * Parse::RecDescent
+
+=back
 
 =head1 AUTHOR
 
@@ -164,7 +179,7 @@ Ed Summers, E<lt>ehs@pobox.comE<gt>
 
 Copyright 2002-2010 by Ed Summers
 
-Copyright 2011 by Alberto Simões
+Copyright 2011-2013 by Alberto Simões
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
