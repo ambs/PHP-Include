@@ -35,7 +35,9 @@ ok( ($hash3{1} eq 'a' and  $hash3{'foo'} eq 'bar' and
     $hash3{123.45} eq 'mo#og' ),
     'hash with different types of key/value pairs'
 );
-ok ( ($hash4{abe} eq 'Abraham Lincoln' and $hash4{larry} = 'Larry Wall' ),
+ok ( ($hash4{abe}   eq 'Abraham Lincoln' and
+      $hash4{larry} eq 'Larry Wall'     and
+      $hash4{html}  eq '<a href="/foo/bar#zbr">link</a>'),
     'hash spread out over several lines'
 );
 

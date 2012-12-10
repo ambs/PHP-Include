@@ -23,6 +23,7 @@ $hash3 = Array( 1 => 'a', 'foo' => "bar", 123.45 => "mo#og" );
 $hash4 = Array(
     'abe'   => 'Abraham Lincoln',
     'larry' => 'Larry Wall'
+    'html'  => "<a href=\"/foo/bar#zbr\">link</a>",
 );
 
 $url = "http://www.google.com/";
