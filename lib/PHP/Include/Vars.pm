@@ -141,11 +141,15 @@ for the include_php_vars() macro.
 
 =item * Parse::RecDescent
 
+=back
+
 =head1 AUTHORS
 
 =over 4
 
 =item * Ed Summers <ehs@pobox.com>
+
+=back 
 
 =cut
 

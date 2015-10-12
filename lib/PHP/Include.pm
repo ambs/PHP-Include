@@ -5,7 +5,7 @@ use warnings;
 use Filter::Simple;
 use Carp qw( croak );
 
-our $VERSION = '0.36';
+our $VERSION = '0.37';
 our $DEBUG = 0;
 our $QUALIFIER = "my";
 
@@ -34,6 +34,8 @@ FILTER {
 	$1.
 	read_file( 'PHP::Include::Vars', $3);
     /gex;
+
+
 
 };
 
